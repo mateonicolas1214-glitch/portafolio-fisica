@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio de Física Aplicada – Mateo Torres</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#1a2744; --gold:#b8952a; --gold-light:#d4af50;
+    --cream:#faf8f3; --white:#fff; --gray:#6b7280;
+    --shadow:0 4px 24px rgba(26,39,68,0.13);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Lato',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh}
+  header{background:linear-gradient(135deg,var(--navy) 60%,#243260 100%);color:#fff;position:relative;overflow:hidden}
+  header::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(184,149,42,0.13)}
+  .header-inner{max-width:1100px;margin:0 auto;padding:36px 32px 28px;display:flex;align-items:center;gap:32px;position:relative;z-index:1}
+  .logos-wrap img{height:110px;width:110px;object-fit:contain;border-radius:50%;background:#fff;padding:6px;box-shadow:0 2px 16px rgba(0,0,0,0.22)}
+  .header-text h1{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:900;line-height:1.15;color:#fff}
+  .header-text h1 span{color:var(--gold-light)}
+  .header-text .subtitle{margin-top:6px;font-size:0.93rem;color:rgba(255,255,255,0.75);font-weight:300}
+  .header-text .student-name{margin-top:10px;font-size:1.05rem;font-weight:700;color:var(--gold-light)}
+  .gold-bar{height:5px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold))}
+  nav{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,39,68,0.18)}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+  .nav-inner::-webkit-scrollbar{display:none}
+  nav a{color:rgba(255,255,255,0.78);text-decoration:none;padding:15px 16px;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap;border-bottom:3px solid transparent;transition:color .2s,border-color .2s,background .2s}
+  nav a:hover,nav a.active{color:var(--gold-light);border-bottom-color:var(--gold-light);background:rgba(184,149,42,0.07)}
+  main{max-width:1100px;margin:0 auto;padding:48px 24px 80px}
+  .section{display:none;animation:fadeIn .4s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:14px}
+  .section-title::after{content:'';display:block;flex:1;height:3px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:2px}
+  .section-subtitle{color:var(--gray);font-size:0.97rem;margin-bottom:32px}
+  .card{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:28px 32px;margin-bottom:24px;border-left:5px solid var(--gold);transition:transform .18s,box-shadow .18s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 8px 36px rgba(26,39,68,0.16)}
+  .card h3{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .card p,.card li{color:var(--gray);line-height:1.75;font-size:0.96rem}
+  .card ul{padding-left:18px} .card ul li{margin-bottom:4px}
+  .info-table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  .info-table th{background:var(--navy);color:var(--gold-light);text-align:left;padding:13px 22px;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;width:36%}
+  .info-table td{padding:13px 22px;border-bottom:1px solid #eee;color:var(--navy);font-size:0.96rem}
+  .info-table tr:last-child td{border-bottom:none}
+  .info-table tr:hover td{background:#f5f3ec}
+  /* FILE CARD */
+  .file-card{padding:18px 24px}
+  .fc-header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .fc-icon{font-size:2.2rem;flex-shrink:0}
+  .fc-info{flex:1;min-width:0}
+  .fc-info h3{font-size:1rem;margin-bottom:3px}
+  .fc-meta{font-size:0.78rem;color:var(--gray)}
+  .fc-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap}
+  .btn-ver{background:var(--navy);color:var(--gold-light);border:none;padding:8px 16px;border-radius:8px;font-size:0.83rem;font-weight:700;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-block}
+  .btn-ver:hover{background:var(--gold);color:#fff}
+  .btn-dl{background:#f0fdf4;color:#16a34a;padding:8px 16px;border-radius:8px;font-size:0.83rem;font-weight:700;text-decoration:none;display:inline-block;transition:background .2s}
+  .btn-dl:hover{background:#bbf7d0}
+  /* UPLOAD */
+  .upload-area{border:2px dashed var(--gold);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;background:rgba(184,149,42,0.03);transition:background .2s;margin-top:16px}
+  .upload-area:hover,.upload-area.dragover{background:rgba(184,149,42,0.10);border-color:var(--gold-light)}
+  .upload-area input[type=file]{display:none}
+  .upload-area svg{margin-bottom:10px;opacity:0.6}
+  .upload-area p{color:var(--gray);font-size:0.9rem}
+  .upload-hint{font-size:0.8rem;margin-top:4px;color:#9ca3af}
+  .file-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--cream);border-radius:10px;margin-bottom:10px;border:1px solid #e5e0d5}
+  .fi-icon{font-size:1.5rem;flex-shrink:0}
+  .fi-info{flex:1;min-width:0}
+  .fi-name{font-weight:700;font-size:0.92rem;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fi-size{font-size:0.78rem;color:var(--gray);margin-top:2px}
+  .fi-actions{display:flex;gap:8px;flex-shrink:0}
+  .btn-v2{background:var(--navy);color:var(--gold-light);border:none;padding:6px 12px;border-radius:6px;font-size:0.79rem;font-weight:700;cursor:pointer;transition:background .2s}
+  .btn-v2:hover{background:var(--gold);color:#fff}
+  .btn-del{background:#fee2e2;color:#dc2626;border:none;padding:6px 10px;border-radius:6px;font-size:0.79rem;font-weight:700;cursor:pointer}
+  .btn-del:hover{background:#fca5a5}
+  .badge{display:inline-block;background:var(--gold);color:#fff;font-size:0.72rem;font-weight:700;border-radius:20px;padding:3px 12px;letter-spacing:0.05em;text-transform:uppercase;margin-left:10px;vertical-align:middle}
+  .badge.green{background:#16a34a}
+  .section-label{display:inline-block;background:rgba(184,149,42,0.12);color:var(--gold);border:1px solid var(--gold);border-radius:8px;padding:4px 14px;font-size:0.8rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:24px}
+  /* MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:1000;align-items:center;justify-content:center}
+  .modal-overlay.open{display:flex}
+  .modal-box{background:#fff;border-radius:14px;width:92vw;max-width:960px;height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+  .modal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--navy);color:var(--gold-light);font-weight:700;font-size:0.95rem;gap:12px}
+  .modal-header span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .modal-close{background:none;border:none;color:var(--gold-light);font-size:1.5rem;cursor:pointer;line-height:1;flex-shrink:0}
+  .modal-body{flex:1;overflow:hidden}
+  .modal-body iframe,.modal-body img{width:100%;height:100%;border:none;object-fit:contain}
+  footer{background:var(--navy);color:rgba(255,255,255,0.55);text-align:center;padding:20px 16px;font-size:0.84rem}
+  footer span{color:var(--gold-light)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logos-wrap">
+      <img src="logo-uce.png" alt="Logos UCE">
+    </div>
+    <div class="header-text">
+      <h1>Portafolio de <span>Física Aplicada</span></h1>
+      <p class="subtitle">Facultad de Filosofía, Letras y Ciencias de la Educación<br>Universidad Central del Ecuador · Quito</p>
+      <p class="student-name">✦ Mateo Nicolás Torres Peñafiel</p>
+    </div>
+  </div>
+</header>
+<div class="gold-bar"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="active" onclick="show('datos',this);return false;">Datos Informativos</a>
+    <a href="#" onclick="show('silabo',this);return false;">Sílabo</a>
+    <a href="#" onclick="show('individuales',this);return false;">Trabajos Individuales</a>
+    <a href="#" onclick="show('grupales',this);return false;">Trabajos Grupales</a>
+    <a href="#" onclick="show('evaluaciones',this);return false;">Evaluaciones</a>
+    <a href="#" onclick="show('mapas',this);return false;">Mapas</a>
+    <a href="#" onclick="show('anexos',this);return false;">Anexos</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- DATOS -->
+  <div id="datos" class="section active">
+    <h2 class="section-title">Datos Informativos</h2>
+    <p class="section-subtitle">Información general del estudiante y la asignatura</p>
+    <table class="info-table">
+      <tr><th>Nombre completo</th><td>Mateo Nicolás Torres Peñafiel</td></tr>
+      <tr><th>Carrera</th><td>Pedagogía de Informática</td></tr>
+      <tr><th>Semestre / Nivel</th><td>Quinto Semestre</td></tr>
+      <tr><th>Asignatura</th><td>Física Aplicada — FIP05P0EC5.1</td></tr>
+      <tr><th>Docente</th><td>MSc. Diego Marcelo Tipán Renjifo</td></tr>
+      <tr><th>Período académico</th><td>Abril 2026 – Julio 2026</td></tr>
+      <tr><th>Correo electrónico</th><td>mateonicolas1214@gmail.com</td></tr>
+      <tr><th>Modalidad</th><td>Presencial</td></tr>
+    <tr>
+    <th>Hoja de vida</th>
+    <td>
+      <a class="btn-ver" href="hoja-vida.pdf" target="_blank">👁 Ver CV</a>
+      &nbsp;
+      <a class="btn-dl" href="hoja-vida.pdf" download>⬇ Descargar</a>
+    </td>
+  </tr>
+
+</table>
+  
+  </div>
+
+  <!-- SILABO -->
+  <div id="silabo" class="section">
+    <h2 class="section-title">Sílabo</h2>
+    <p class="section-subtitle">Plan analítico de Física Aplicada — MSc. Diego Tipán</p>
+    <div class="card">
+      <h3>📋 Descripción de la Asignatura</h3>
+      <p>Física Aplicada (FIP05P0EC5.1) — Quinto semestre, Carrera de Pedagogía de Informática. Total: <strong>128 horas</strong> (64 docencia · 16 práctica experimental · 48 trabajo autónomo). Período Abril–Julio 2026, modalidad presencial.</p>
+    </div>
+    <div class="card">
+      <h3>📚 Unidades Didácticas</h3>
+      <ul>
+        <li><strong>Unidad 1:</strong> Introducción al estudio de la Física; Vectores y sus operaciones</li>
+        <li><strong>Unidad 2:</strong> Cinemática</li>
+        <li><strong>Unidad 3:</strong> Dinámica</li>
+        <li><strong>Unidad 4:</strong> Trabajo, Potencia y Energía</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📊 Sistema de Evaluación</h3>
+      <ul>
+        <li>Evaluación Formativa 1 — Individual: 35% (7 puntos)</li>
+        <li>Evaluación Formativa 2 — Grupal: 25% (5 puntos)</li>
+        <li>Evaluación Sumativa 1: 10% (2 puntos)</li>
+        <li>Evaluación Sumativa 2: 30% (6 puntos)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📎 Documento Oficial del Sílabo</h3>
+      <a class="btn-ver" href="Silabo_Fisica_Aplicada.pdf" target="_blank">👁 Ver Sílabo</a>
+      &nbsp;
+      <a class="btn-dl" href="Silabo_Fisica_Aplicada.pdf" download>⬇ Descargar</a>
+      <iframe src="Silabo_Fisica_Aplicada.pdf" style="width:100%;height:700px;border:none;border-radius:10px;margin-top:16px;box-shadow:var(--shadow)"></iframe>
+    </div>
+  </div>
+
+
+  <!-- TRABAJOS INDIVIDUALES -->
+  <div id="individuales" class="section">
+    <h2 class="section-title">Trabajos Individuales</h2>
+    <p class="section-subtitle">Trabajos realizados de forma individual</p>
+
+    <div class="section-label">📌 Unidad 1 — Vectores</div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">📐</div>
+        <div class="fc-info"><h3>Vectores</h3><span class="fc-meta">PDF · Unidad 1 — Vectores</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Vectores.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Vectores.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">📐</div>
+        <div class="fc-info"><h3>Vectores 2D</h3><span class="fc-meta">PDF · Unidad 1 — Vectores</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Vectores_2D.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Vectores_2D.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">📐</div>
+        <div class="fc-info"><h3>Vectores 3D</h3><span class="fc-meta">PDF · Unidad 1 — Vectores</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Vectores_3D.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Vectores_3D.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">🧩</div>
+        <div class="fc-info"><h3>Vectores — Maqueta</h3><span class="fc-meta">PDF · Unidad 1 — Vectores</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Vectores_Maqueta.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Vectores_Maqueta.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">📌 Unidad 2 — Cinemática</div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">🌀</div>
+        <div class="fc-info"><h3>MCU – MCUA (Movimiento Circular)</h3><span class="fc-meta">PDF · Unidad 2 — Cinemática</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="MCU_MCUA.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="MCU_MCUA.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">🏹</div>
+        <div class="fc-info"><h3>Movimiento Parabólico</h3><span class="fc-meta">PDF · Unidad 2 — Cinemática</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Movimiento_Parabolico.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Movimiento_Parabolico.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">📌 Unidad 3 — Dinámica</div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">🧵</div>
+        <div class="fc-info"><h3>Tensión</h3><span class="fc-meta">PDF · Unidad 3 — Dinámica</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Tension.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Tension.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">📌 Ensayos</div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">✍️</div>
+        <div class="fc-info"><h3>Ensayo — Inteligencia Artificial</h3><span class="fc-meta">PDF · Ensayo</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Ensayo_IA.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Ensayo_IA.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">✍️</div>
+        <div class="fc-info"><h3>Ensayo — Ingeniería Social</h3><span class="fc-meta">PDF · Ensayo</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Ensayo_Ingenieria_Social.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Ensayo_Ingenieria_Social.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">📖</div>
+        <div class="fc-info"><h3>Ensayo — Breve Historia del Tiempo (Cap. 1)</h3><span class="fc-meta">PDF · Ensayo</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Ensayo_Cap1_Breve_Historia_Tiempo.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Ensayo_Cap1_Breve_Historia_Tiempo.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">📖</div>
+        <div class="fc-info"><h3>Ensayo — Breve Historia del Tiempo (Cap. 2)</h3><span class="fc-meta">PDF · Ensayo</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Ensayo_Cap2_Breve_Historia_Tiempo.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Ensayo_Cap2_Breve_Historia_Tiempo.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">📖</div>
+        <div class="fc-info"><h3>Ensayo — Breve Historia del Tiempo (Cap. 3)</h3><span class="fc-meta">PDF · Ensayo</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Ensayo_Cap3_Breve_Historia_Tiempo.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Ensayo_Cap3_Breve_Historia_Tiempo.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">📖</div>
+        <div class="fc-info"><h3>Ensayo — Breve Historia del Tiempo (Cap. 4)</h3><span class="fc-meta">PDF · Ensayo</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Ensayo_Cap4_Breve_Historia_Tiempo.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Ensayo_Cap4_Breve_Historia_Tiempo.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:32px;">
+      <h3>➕ Agregar más trabajos individuales</h3>
+      <div class="upload-area" id="drop-individuales" onclick="document.getElementById('file-individuales').click()">
+        <input type="file" id="file-individuales" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png,.xlsx,.zip">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#b8952a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+        <p>Haz clic o arrastra archivos aquí</p>
+        <p class="upload-hint">PDF, Word, PowerPoint, imágenes — máx. 10 MB</p>
+      </div>
+      <div id="individuales-list"></div>
+    </div>
+  </div>
+
+  <!-- TRABAJOS GRUPALES -->
+  <div id="grupales" class="section">
+    <h2 class="section-title">Trabajos Grupales</h2>
+    <p class="section-subtitle">Proyectos realizados en equipo — se guardan automáticamente</p>
+    <div class="card">
+      <h3>➕ Agregar Trabajo Grupal</h3>
+      <div class="upload-area" id="drop-grupales" onclick="document.getElementById('file-grupales').click()">
+        <input type="file" id="file-grupales" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png,.xlsx,.zip">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#b8952a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+        <p>Haz clic o arrastra archivos aquí</p>
+        <p class="upload-hint">PDF, Word, PowerPoint, imágenes — máx. 10 MB</p>
+      </div>
+      <div id="grupales-list"></div>
+    </div>
+  </div>
+
+  <!-- EVALUACIONES -->
+  <div id="evaluaciones" class="section">
+    <h2 class="section-title">Evaluaciones</h2>
+    <p class="section-subtitle">Registro de evaluaciones — se guardan automáticamente</p>
+    <div class="card">
+      <h3>📊 Sistema de calificación</h3>
+      <ul>
+        <li>Formativa 1 Individual — 35% (7 pts)</li>
+        <li>Formativa 2 Grupal — 25% (5 pts)</li>
+        <li>Sumativa 1 — 10% (2 pts)</li>
+        <li>Sumativa 2 — 30% (6 pts)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>➕ Subir evaluaciones</h3>
+      <div class="upload-area" id="drop-evaluaciones" onclick="document.getElementById('file-evaluaciones').click()">
+        <input type="file" id="file-evaluaciones" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#b8952a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+        <p>Haz clic o arrastra archivos aquí</p>
+        <p class="upload-hint">PDF, Word, imágenes — máx. 10 MB</p>
+      </div>
+      <div id="evaluaciones-list"></div>
+    </div>
+  </div>
+
+  <!-- MAPAS -->
+  <div id="mapas" class="section">
+    <h2 class="section-title">Mapas</h2>
+    <p class="section-subtitle">Mapas conceptuales y mentales</p>
+    <div class="section-label">🗺️ Unidad 1 — Vectores y Sistemas de Unidades</div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">🗺️</div>
+        <div class="fc-info"><h3>Mapa de Trigonometría</h3><span class="fc-meta">PDF · Unidad 1</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Mapa_Trigonometria.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Mapa_Trigonometria.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card file-card">
+      <div class="fc-header">
+        <div class="fc-icon">🗺️</div>
+        <div class="fc-info"><h3>Mapa Sistema Internacional (SI)</h3><span class="fc-meta">PDF · Unidad 1</span></div>
+        <div class="fc-actions">
+          <a class="btn-ver" href="Mapa_SI.pdf" target="_blank">👁 Ver</a>
+          <a class="btn-dl" href="Mapa_SI.pdf" download>⬇ Descargar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:32px;">
+      <h3>➕ Agregar más mapas</h3>
+      <div class="upload-area" id="drop-mapas" onclick="document.getElementById('file-mapas').click()">
+        <input type="file" id="file-mapas" multiple accept=".pdf,.jpg,.jpeg,.png">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#b8952a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+        <p>Haz clic o arrastra archivos aquí</p>
+        <p class="upload-hint">PDF, imágenes — máx. 10 MB</p>
+      </div>
+      <div id="mapas-list"></div>
+    </div>
+  </div>
+
+  <!-- ANEXOS -->
+  <div id="anexos" class="section">
+    <h2 class="section-title">Anexos</h2>
+    <p class="section-subtitle">Material complementario y evidencias</p>
+    <div class="card">
+      <h3>➕ Agregar Anexo</h3>
+      <div class="upload-area" id="drop-anexos" onclick="document.getElementById('file-anexos').click()">
+        <input type="file" id="file-anexos" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png,.xlsx,.zip">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#b8952a" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+        <p>Haz clic o arrastra archivos aquí</p>
+        <p class="upload-hint">PDF, Word, PowerPoint, imágenes — máx. 10 MB</p>
+      </div>
+      <div id="anexos-list"></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Portafolio de Física Aplicada · <span>Mateo Nicolás Torres Peñafiel</span> · Universidad Central del Ecuador · 2026
+</footer>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span id="modal-title">Archivo</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+function show(id,el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.getElementById('modal-body').innerHTML='';
+}
+document.getElementById('modal').addEventListener('click',e=>{
+  if(e.target===document.getElementById('modal')) closeModal();
+});
+
+// INDEXEDDB for user-uploaded files
+const DB_NAME='portafolio_fisica_v3';
+let db;
+function openDB(){
+  return new Promise((res,rej)=>{
+    const req=indexedDB.open(DB_NAME,1);
+    req.onupgradeneeded=e=>{
+      const d=e.target.result;
+      ['individuales','grupales','evaluaciones','mapas','anexos'].forEach(s=>{
+        if(!d.objectStoreNames.contains(s)) d.createObjectStore(s,{keyPath:'id',autoIncrement:true});
+      });
+    };
+    req.onsuccess=e=>{db=e.target.result;res(db);};
+    req.onerror=e=>rej(e);
+  });
+}
+function saveFile(store,obj){return new Promise((res,rej)=>{const tx=db.transaction(store,'readwrite');const r=tx.objectStore(store).add(obj);r.onsuccess=()=>res(r.result);r.onerror=e=>rej(e);});}
+function getFiles(store){return new Promise((res,rej)=>{const tx=db.transaction(store,'readonly');const r=tx.objectStore(store).getAll();r.onsuccess=()=>res(r.result);r.onerror=e=>rej(e);});}
+function deleteFile(store,id){return new Promise((res,rej)=>{const tx=db.transaction(store,'readwrite');const r=tx.objectStore(store).delete(id);r.onsuccess=()=>res();r.onerror=e=>rej(e);});}
+function fileIcon(n){const e=n.split('.').pop().toLowerCase();return{pdf:'📄',doc:'📝',docx:'📝',ppt:'📊',pptx:'📊',xls:'📈',xlsx:'📈',jpg:'🖼️',jpeg:'🖼️',png:'🖼️',zip:'🗜️'}[e]||'📁';}
+function fmtSize(b){if(b<1024)return b+' B';if(b<1048576)return(b/1024).toFixed(1)+' KB';return(b/1048576).toFixed(1)+' MB';}
+function fmtDate(ts){return new Date(ts).toLocaleDateString('es-EC',{day:'2-digit',month:'short',year:'numeric'});}
+
+async function renderList(store){
+  const c=document.getElementById(store+'-list');
+  if(!c) return;
+  const files=await getFiles(store);
+  if(!files.length){c.innerHTML='';return;}
+  c.innerHTML='<div style="margin-top:20px"><p style="font-weight:700;color:var(--navy);margin-bottom:12px;">Archivos subidos <span class=\"badge green\">'+files.length+'</span></p><div>'+
+    files.map(f=>`<div class="file-item"><div class="fi-icon">${fileIcon(f.name)}</div><div class="fi-info"><div class="fi-name">${f.name}</div><div class="fi-size">${fmtSize(f.size)} · ${fmtDate(f.date)}</div></div><div class="fi-actions"><button class="btn-v2" onclick="viewUploaded('${store}',${f.id})">👁 Ver</button><button class="btn-del" onclick="removeFile('${store}',${f.id})">🗑</button></div></div>`).join('')+'</div></div>';
+}
+
+async function handleFiles(store,fileList){
+  for(const file of fileList){
+    if(file.size>10*1024*1024){alert('"'+file.name+'" supera 10 MB.');continue;}
+    const reader=new FileReader();
+    reader.onload=async e=>{await saveFile(store,{name:file.name,size:file.size,type:file.type,date:Date.now(),data:e.target.result});renderList(store);};
+    reader.readAsDataURL(file);
+  }
+}
+async function removeFile(store,id){if(!confirm('¿Eliminar este archivo?'))return;await deleteFile(store,id);renderList(store);}
+async function viewUploaded(store,id){
+  const files=await getFiles(store);
+  const f=files.find(x=>x.id===id);if(!f)return;
+  document.getElementById('modal-title').textContent=f.name;
+  const body=document.getElementById('modal-body');
+  const ext=f.name.split('.').pop().toLowerCase();
+  if(['jpg','jpeg','png','gif','webp'].includes(ext)){body.innerHTML='<img src="'+f.data+'" style="object-fit:contain;">';}
+  else if(ext==='pdf'){body.innerHTML='<iframe src="'+f.data+'" width="100%" height="100%" style="border:none"></iframe>';}
+  else{body.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;color:#6b7280"><div style="font-size:4rem;">'+fileIcon(f.name)+'</div><p>'+f.name+'</p><a href="'+f.data+'" download="'+f.name+'" class="btn-ver" style="padding:10px 24px;">⬇ Descargar</a></div>';}
+  document.getElementById('modal').classList.add('open');
+}
+
+['individuales','grupales','evaluaciones','mapas','anexos'].forEach(store=>{
+  const zone=document.getElementById('drop-'+store);
+  const input=document.getElementById('file-'+store);
+  if(!zone||!input)return;
+  input.addEventListener('change',()=>handleFiles(store,input.files));
+  zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover');});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
+  zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('dragover');handleFiles(store,e.dataTransfer.files);});
+});
+
+openDB().then(()=>['individuales','grupales','evaluaciones','mapas','anexos'].forEach(renderList));
+</script>
+</body>
+</html>
